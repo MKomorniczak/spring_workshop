@@ -1,6 +1,7 @@
 package org.example.data_access;
 
 import org.example.models.Student;
+import org.example.sequencer.StudentSequencer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,10 @@ public class StudentDaoListImpl implements StudentDao{
 
     @Override
     public Student save(Student student) {
+        if (student.getId() == 0){
+            student.setId(StudentSequencer.nextStudentId());
+            students.add(student);
+        }
         return null;
     }
 
